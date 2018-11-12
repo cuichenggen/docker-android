@@ -21,4 +21,4 @@ RUN sdkmanager --update && yes | sdkmanager --licenses
 RUN sdkmanager "tools" "platform-tools" "emulator" "extras;android;m2repository" && \
     sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
-    sdkmanager "system-images;android-23;google_apis;x86_64"
+    sdkmanager "system-images;android-22;default;x86"
