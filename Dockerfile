@@ -20,4 +20,4 @@ RUN sdkmanager --update && yes | sdkmanager --licenses
 # Update SDK manager and install system image, platform and build tools
 RUN sdkmanager "tools" "platform-tools" "emulator" "extras;android;m2repository" && \
     sdkmanager "build-tools;26.0.2" && \
-    sdkmanager "platforms;android-API_LEVEL"
+    sdkmanager "platforms;android-22"
