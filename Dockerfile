@@ -14,13 +14,11 @@ ENV ANDROID_HOME ${android_home}
 ENV ADB_INSTALL_TIMEOUT 120
 ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
 
-RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg
-RUN sdkmanager --update && yes | sdkmanager --licenses
-
-# Update SDK manager and install system image, platform and build tools
-RUN sdkmanager "tools" "platform-tools" "emulator" "extras;android;m2repository" && \
+RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg && \
+    sdkmanager --update && yes | sdkmanager --licenses && \
+    sdkmanager "tools" "platform-tools" "emulator" "extras;android;m2repository" && \
     sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
     sdkmanager "system-images;android-22;default;x86" && \
-    yes | sdkmanager --licenses && \
+    sdkmanager --update && yes | sdkmanager --licenses && \
     sdkmanager --list
