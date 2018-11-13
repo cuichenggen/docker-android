@@ -16,10 +16,12 @@ ENV ADB_INSTALL_TIMEOUT 120
 ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
 
 RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg && \
-    sdkmanager --update && yes | sdkmanager --licenses && \
-    sdkmanager "tools" "platform-tools" "emulator" "extras;android;m2repository" && \
+    sdkmanager "tools" "platform-tools" "emulator" && \
     sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
     sdkmanager "system-images;android-22;default;x86" && \
-    sdkmanager --update && yes | sdkmanager --licenses && \
-    sdkmanager --list
+    sdkmanager --update && yes | sdkmanager --licenses &&
+
+RUN apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils && \
+    avdmanager create avd --force --name testAVD --abi default/x86 --package 'system-images;android-22;default;x86' --device "Nexus 6P" && \
+    avdmanager list avd
