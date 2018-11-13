@@ -22,6 +22,4 @@ RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.and
     sdkmanager "system-images;android-22;default;x86" && \
     sdkmanager --update && yes | sdkmanager --licenses &&
 
-RUN apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils && \
-    avdmanager create avd --force --name testAVD --abi default/x86 --package 'system-images;android-22;default;x86' --device "Nexus 6P" && \
-    avdmanager list avd
+RUN avdmanager create avd --force --name testAVD --abi default/x86 --package 'system-images;android-22;default;x86' --device "Nexus 6P"
