@@ -20,6 +20,6 @@ RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.and
     sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
     sdkmanager "system-images;android-22;default;x86" && \
-    sdkmanager --update && yes | sdkmanager --licenses &&
+    sdkmanager --update && yes | sdkmanager --licenses
 
 RUN avdmanager create avd --force --name testAVD --abi default/x86 --package 'system-images;android-22;default;x86' --device "Nexus 6P"
