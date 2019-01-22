@@ -22,7 +22,7 @@ RUN mkdir -p $ANDROID_HOME/licenses/ \
 RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg && \
     sdkmanager --update && yes | sdkmanager --licenses && \
     sdkmanager "tools" "platform-tools" "emulator" && \
-    sdkmanager "build-tools;26.1.1" && \
+    sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
     sdkmanager "system-images;android-22;default;x86" && \
     sdkmanager --list && \
