@@ -20,7 +20,7 @@ RUN mkdir -p $ANDROID_HOME/licenses/ \
   && echo "84831b9409646a918e30573bab4c9c91346d8abd\n504667f4c0de7af1a06de9f4b1727b84351f2910" > $ANDROID_HOME/licenses/android-sdk-preview-license
 
 RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg && \
-    sdkmanager --update && yes | sdkmanager --licenses && \
+    (while sleep 3; do echo "y"; done) | sdkmanager --update && yes | sdkmanager --licenses && \
     sdkmanager "tools" "platform-tools" "emulator" && \
     sdkmanager "build-tools;26.0.2" && \
     sdkmanager "platforms;android-22" && \
