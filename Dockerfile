@@ -32,4 +32,6 @@ RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.and
 ADD minidemo.tar.gz /root
 RUN chmod +x /root/minidemo/gradlew && \
     /root/minidemo/gradlew build && \
+    ./gradlew tasks && \
+    ./gradlew -v && \
     rm -rf /root/minidemo
